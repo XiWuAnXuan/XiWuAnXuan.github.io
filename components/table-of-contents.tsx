@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface TocItem {
   id: string
@@ -10,6 +10,32 @@ export interface TocItem {
 
 export default function TableOfContents({ items }: { items: TocItem[] }) {
   const [open, setOpen] = useState(true)
+  const [activeId, setActiveId] = useState(items[0]?.id ?? '')
+
+  useEffect(() => {
+    if (!items.length) return
+
+    const updateActiveHeading = () => {
+      const headings = items
+        .map(item => document.getElementById(item.id))
+        .filter((heading): heading is HTMLElement => Boolean(heading))
+
+      const current = [...headings]
+        .reverse()
+        .find(heading => heading.getBoundingClientRect().top <= 140)
+
+      setActiveId(current?.id ?? items[0].id)
+    }
+
+    updateActiveHeading()
+    window.addEventListener('scroll', updateActiveHeading, { passive: true })
+    window.addEventListener('resize', updateActiveHeading)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveHeading)
+      window.removeEventListener('resize', updateActiveHeading)
+    }
+  }, [items])
 
   if (!items.length) return null
 
@@ -30,7 +56,13 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={item.depth === 3 ? 'post-toc-link post-toc-link-nested' : 'post-toc-link'}
+              className={[
+                'post-toc-link',
+                item.depth === 3 ? 'post-toc-link-nested' : '',
+                item.id === activeId ? 'post-toc-link-active' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
             >
               {item.text}
             </a>

@@ -72,9 +72,9 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           )}
         </header>
       </section>
-      <div className="post-detail-grid md:mb-10 md:px-6 mx-auto mb-8 w-full max-w-5xl px-5">
+      <div className="post-article-layout">
         <TableOfContents items={tableOfContents} />
-        <article className="post-prose w-full max-w-2xl">
+        <article className="post-prose post-article-body md:mb-10 md:px-0 mx-auto mb-8 w-full max-w-2xl px-5">
           <MDXRemote source={post.content} components={mdxComponents} />
         </article>
       </div>

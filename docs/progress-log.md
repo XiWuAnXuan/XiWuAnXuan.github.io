@@ -25,3 +25,4 @@
 - [x] 添加 GitHub Pages 静态部署：修复 feed.xml 静态导出，新增 Actions 工作流，配置站点 URL 为 https://XiWuAnXuan.github.io。
 - [x] 修复 GitHub Pages 首次部署：为 configure-pages 增加 enablement，允许工作流自动启用 Pages。
 - [x] 给文章详情页添加左侧可折叠目录：自动提取二/三级标题，生成锚点 id，支持点击跳转，并兼容 GitHub Pages 静态导出。
+- [x] 调整文章目录为桌面左侧留白固定目录：撤销嵌入正文旁边的布局，增加滚动当前小节高亮，保留可收起展开。
