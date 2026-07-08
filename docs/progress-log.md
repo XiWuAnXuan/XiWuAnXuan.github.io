@@ -24,3 +24,4 @@
 - [x] 清理无用上传文件：删除旧字体、旧 favicon/logo、未引用图片和重复图片，并修正 6 张文章图片的大小写路径以适配 Linux 部署。
 - [x] 添加 GitHub Pages 静态部署：修复 feed.xml 静态导出，新增 Actions 工作流，配置站点 URL 为 https://XiWuAnXuan.github.io。
 - [x] 修复 GitHub Pages 首次部署：为 configure-pages 增加 enablement，允许工作流自动启用 Pages。
+- [x] 给文章详情页添加左侧可折叠目录：自动提取二/三级标题，生成锚点 id，支持点击跳转，并兼容 GitHub Pages 静态导出。
