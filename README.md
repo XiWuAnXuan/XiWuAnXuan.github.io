@@ -1,28 +1,59 @@
-<div align=center>
-  <Link href="https://blog.aozaki.cc/" target="_blank" rel="noopener noreferrer"><img src="/public/logo/logo_dark.svg" alt="aozaki's blog" width="50%" height="50%" /></a>
-  
-  <b>- <em>Yet Another Blog of Aozaki</em> -</b>
-  
-  <br>
-  <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer"><img style="display: inline-block;" src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" /></a>
-  <Link href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer"><img style="display: inline-block;" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white" alt="tailwindcss" />  </a>
-  <Link href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer"><img style="display: inline-block;" src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="typescript" />  </a>
-  <Link href="https://pnpm.io/" target="_blank" rel="noopener noreferrer"><img style="display: inline-block;" src="https://img.shields.io/badge/pnpm-%236C78AF.svg?style=flat-square&logo=pnpm&logoColor=white" alt="pnpm" />  </a>
-</div>
+# Xuan Blog
 
----
+Xuan 的个人博客，使用 Next.js 15 App Router、Velite、Tailwind CSS v3.4 和 next-themes 重构。
 
-Based on [shuding/site](https://github.com/shuding/site)
+## 本地运行
 
-- Built with Next.js / [Nextra](https://github.com/shuding/nextra/tree/core), using [`nextra-theme-blog`](https://github.com/shuding/nextra/tree/main/packages/nextra-theme-blog) v2
-- Re-written functions with TypeScript
-- Refactor CSS layout with [Tailwind CSS](https://tailwindcss.com/)
-<!-- - Deployed on [Cloudflare Pages](https://pages.cloudflare.com/) -->
+要求：
 
----
+- Node.js 22+
+- npm 11+
 
-Code and framework released under [MIT License](https://github.com/aozaki-kuro/aozaki-next-blog/blob/master/LICENSE)
+安装依赖：
 
-Contents were release under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+`ash
+npm install
+`
 
-Photo / Porfolio _ALL RIGHTS RESERVED_.
+开发预览：
+
+`ash
+npm run dev
+`
+
+生产构建：
+
+`ash
+npm run build
+npm run start
+`
+
+测试基础工具函数：
+
+`ash
+npm test
+`
+
+## 内容维护
+
+- 文章放在 content/posts/。
+- 文章图片放在 public/images/，frontmatter 或正文中使用 /images/... 引用。
+- 文章卡片封面在 frontmatter 添加 image: "/images/example.jpg"。
+- 站点图标使用 pp/icon.svg。
+- 每次完成可见改动后，记录到 docs/progress-log.md。
+
+## 上传/部署说明
+
+仓库中保留了源码、文章、实际使用的图片、字体和图标；排除了：
+
+-
+
+ode_modules/
+
+- .next/、.velite/、out/ 等构建产物
+- 本地预览日志和抓取快照
+- 草稿 drafts/
+- 已移除旧板块素材 public/images/commission/、public/images/photography/
+
+clone 后运行
+pm install && npm run build 即可生成与当前仓库一致的网站。
