@@ -1,30 +1,30 @@
-import Link from "next/link";
-import { getReadingStats } from "../lib/reading-stats.mjs";
+import Link from 'next/link'
+import { getReadingStats } from '../lib/reading-stats.mjs'
 
 export interface PostCardPost {
-  slug: string;
-  title: string;
-  date: string;
-  description?: string;
-  image?: string;
-  content: string;
+  slug: string
+  title: string
+  date: string
+  description?: string
+  image?: string
+  content: string
 }
 
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString);
-  if (Number.isNaN(date.getTime())) return dateString;
+  const date = new Date(dateString)
+  if (Number.isNaN(date.getTime())) return dateString
 
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  });
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+  })
 
-  return formatter.format(date).toUpperCase();
-};
+  return formatter.format(date).toUpperCase()
+}
 
 export default function PostCard({ post }: { post: PostCardPost }) {
-  const readingStats = getReadingStats(post.content);
+  const readingStats = getReadingStats(post.content)
 
   return (
     <Link href={`/posts/${post.slug}`} className="post-card group">
@@ -33,7 +33,7 @@ export default function PostCard({ post }: { post: PostCardPost }) {
       <div className="post-card-content">
         <div className="post-card-layout">
           <div className="post-card-copy">
-            <h3 className="mb-3 text-base font-bold tracking-tight text-zinc-900 sm:text-lg dark:text-zinc-100">
+            <h3 className="sm:text-lg mb-3 text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {post.title}
             </h3>
             {post.description && (
@@ -56,5 +56,5 @@ export default function PostCard({ post }: { post: PostCardPost }) {
         </div>
       </div>
     </Link>
-  );
+  )
 }

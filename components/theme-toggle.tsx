@@ -1,33 +1,28 @@
-"use client";
+'use client'
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 export default function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
-  const isDark = mounted && resolvedTheme === "dark";
+  const isDark = mounted && resolvedTheme === 'dark'
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       className="group relative ml-4 flex cursor-pointer items-center border-0 bg-transparent p-0 pl-6 text-neutral-800 transition-opacity hover:!opacity-100 dark:text-white"
     >
       <span className="absolute left-0 flex size-6 items-center justify-center overflow-hidden border-b border-transparent group-hover:border-neutral-600 dark:group-hover:border-neutral-300">
         {isDark ? (
-          <svg
-            className="size-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -36,12 +31,7 @@ export default function ThemeToggle() {
             />
           </svg>
         ) : (
-          <svg
-            className="size-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -52,5 +42,5 @@ export default function ThemeToggle() {
         )}
       </span>
     </button>
-  );
+  )
 }

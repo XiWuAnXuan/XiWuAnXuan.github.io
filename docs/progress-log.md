@@ -22,3 +22,4 @@
 - [x] 初始化 Git 仓库并上传到 GitHub：整理 .gitignore，排除构建产物、临时快照、草稿和旧 commission/photography 素材，推送到私有仓库 Jiaxon/Blog_Project。
 - [x] 补齐仓库可复现运行配置：更新 README、固定关键依赖版本、修正 webmanifest，并准备 npm 锁文件用于 clone 后直接安装构建。
 - [x] 清理无用上传文件：删除旧字体、旧 favicon/logo、未引用图片和重复图片，并修正 6 张文章图片的大小写路径以适配 Linux 部署。
+- [x] 添加 GitHub Pages 静态部署：修复 feed.xml 静态导出，新增 Actions 工作流，配置站点 URL 为 https://XiWuAnXuan.github.io。
