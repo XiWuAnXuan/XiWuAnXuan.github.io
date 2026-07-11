@@ -35,3 +35,4 @@
 - [x] 覆盖 app/、components/、lib/ 与根配置文件；跳过 next-env.d.ts（Next 生成勿改）
 - [x] 移除首页与页脚社交图标链接；页脚删除 CC BY-NC 4.0 与 [ Afezria ]，仅保留年份与 © Xuan
 - [x] 隐藏文章侧栏目录滚动条（保留滚轮滚动）
+- [x] 文章代码块：Shiki 语法高亮（识别 language-xxx）、语言标签、右上角一键复制

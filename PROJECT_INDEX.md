@@ -9,7 +9,7 @@
 | ------------ | ----------------------------------------------------------------------------------------------------------- |
 | **名称**     | xuan-blog（Xuan 个人博客）                                                                                  |
 | **定位**     | 文章列表 + 文章详情 + 关于页 + RSS；无 commission / photography                                             |
-| **技术栈**   | Next.js 15 App Router · React 19 · Velite 0.4 · Tailwind CSS 3.4 · next-themes · next-mdx-remote            |
+| **技术栈**   | Next.js 15 App Router · React 19 · Velite 0.4 · Tailwind CSS 3.4 · next-themes · next-mdx-remote · Shiki    |
 | **包管理**   | npm（`packageManager: npm@11.13.0`）                                                                        |
 | **入口**     | `app/layout.tsx` + `app/page.tsx`；开发 `npm run dev`；构建 `npm run build`；测试 `npm test`                |
 | **内容源**   | `content/posts/*.md` → Velite → `@/.velite`                                                                 |
@@ -48,6 +48,7 @@ Blog_Project/
 │           └── page.tsx      # /posts/page/N
 ├── components/               # UI 组件
 │   ├── FOLDER_INDEX.md
+│   ├── code-block.tsx        # 代码高亮 + 复制
 │   ├── decorative-grid.tsx
 │   ├── mdx-components.tsx
 │   ├── pagination-nav.tsx
@@ -101,6 +102,8 @@ graph TD
   PostDetail --> ReadingStats
   PostDetail --> TocLib[lib/toc.mjs]
   MdxComp --> TocLib
+  MdxComp --> CodeBlock[components/code-block]
+  CodeBlock --> Shiki[shiki]
 
   Feed[app/feed.xml/route.ts] --> VeliteData
 ```

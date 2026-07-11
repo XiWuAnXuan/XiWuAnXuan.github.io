@@ -532,7 +532,7 @@
   color: rgb(245 245 245);
 }
 
-.post-prose :where(pre):not(:where(.not-prose, .not-prose *)) {
+.post-prose :where(pre):not(:where(.not-prose, .not-prose *, .code-block, .code-block *)) {
   overflow-x: auto;
   border-radius: 0.375rem;
   padding: 1em 1.5em;
@@ -542,11 +542,11 @@
   letter-spacing: 0;
 }
 
-.dark .post-prose :where(pre):not(:where(.not-prose, .not-prose *)) {
+.dark .post-prose :where(pre):not(:where(.not-prose, .not-prose *, .code-block, .code-block *)) {
   background-color: #242426 !important;
 }
 
-.post-prose :where(pre code):not(:where(.not-prose, .not-prose *)) {
+.post-prose :where(pre code):not(:where(.not-prose, .not-prose *, .code-block, .code-block *)) {
   display: inline-block;
   padding: 0;
   color: #545454;
@@ -554,8 +554,144 @@
   font-weight: 400;
 }
 
-.dark .post-prose :where(pre code):not(:where(.not-prose, .not-prose *)) {
+.dark
+  .post-prose
+  :where(pre code):not(:where(.not-prose, .not-prose *, .code-block, .code-block *)) {
   color: #e9e9e9;
+}
+
+/* ── Syntax-highlighted code blocks ───────────────────────── */
+.code-block {
+  position: relative;
+  margin: 1.5em 0;
+  overflow: hidden;
+  border: 1px solid rgb(228 228 231);
+  border-radius: 0.6rem;
+  background: #f6f8fa;
+  font-family: var(--font-ioskeley-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  line-height: 1.7;
+}
+
+.dark .code-block {
+  border-color: rgb(63 63 70);
+  background: #0d1117;
+}
+
+.code-block-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgb(228 228 231);
+  background: rgb(250 250 250 / 0.9);
+  padding: 0.4rem 0.75rem 0.4rem 0.9rem;
+}
+
+.dark .code-block-toolbar {
+  border-bottom-color: rgb(63 63 70);
+  background: rgb(24 24 27 / 0.85);
+}
+
+.code-block-lang {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(113 113 122);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.dark .code-block-lang {
+  color: rgb(161 161 170);
+}
+
+.code-block-copy {
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 1px solid rgb(212 212 216);
+  border-radius: 0.375rem;
+  background: rgb(255 255 255 / 0.9);
+  padding: 0.2rem 0.55rem;
+  color: rgb(82 82 91);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
+.code-block-copy:hover {
+  border-color: rgb(161 161 170);
+  background: #fff;
+  color: rgb(24 24 27);
+}
+
+.dark .code-block-copy {
+  border-color: rgb(82 82 91);
+  background: rgb(39 39 42 / 0.9);
+  color: rgb(212 212 216);
+}
+
+.dark .code-block-copy:hover {
+  border-color: rgb(113 113 122);
+  background: rgb(63 63 70);
+  color: #fff;
+}
+
+.code-block-body {
+  overflow-x: auto;
+}
+
+.code-block-body pre,
+.code-block-fallback {
+  margin: 0 !important;
+  overflow-x: auto;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 1rem 1.15rem !important;
+  font-size: 1em !important;
+  line-height: inherit !important;
+}
+
+.code-block-body pre code,
+.code-block-fallback code {
+  display: block;
+  padding: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  font-size: 1em !important;
+  font-weight: 400 !important;
+  font-family: inherit;
+  white-space: pre;
+}
+
+/* Shiki dual theme (next-themes uses class "dark" on <html>) */
+.code-block .shiki,
+.code-block .shiki span {
+  background-color: transparent !important;
+}
+
+html.dark .code-block .shiki,
+html.dark .code-block .shiki span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+html:not(.dark) .code-block .shiki,
+html:not(.dark) .code-block .shiki span {
+  color: var(--shiki-light) !important;
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
 }
 
 code::before,

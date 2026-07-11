@@ -1,13 +1,14 @@
 /**
- * Input: mdx/types, next/link, lib/toc.mjs (slugifyHeading)
+ * Input: mdx/types, next/link, #components/code-block, lib/toc.mjs (slugifyHeading)
  * Output: createMdxComponents(), mdxComponents (default), Callout/Tabs 等兼容组件
- * Pos: UI层-MDX组件映射，标题锚点与 Nextra 旧组件兜底
+ * Pos: UI层-MDX组件映射，标题锚点、代码高亮与 Nextra 旧组件兜底
  *
  * 本注释在文件修改时自动更新
  */
 
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import CodeBlock from '#components/code-block'
 import { slugifyHeading } from '../lib/toc.mjs'
 
 const getHeadingText = (children: React.ReactNode): string => {
@@ -45,8 +46,12 @@ const mdxComponents: MDXComponents = {
     // eslint-disable-next-line @next/next/no-img-element
     <img src={src} alt={alt ?? ''} loading="lazy" />
   ),
-  pre: ({ children }) => <pre>{children}</pre>,
-  code: ({ children }) => <code>{children}</code>,
+  pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+  code: ({ children, className, ...props }) => (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  ),
 
   // Nextra legacy fallbacks
   Callout: ({ children }: { children?: React.ReactNode }) => (

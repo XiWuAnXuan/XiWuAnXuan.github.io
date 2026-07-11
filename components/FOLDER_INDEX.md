@@ -8,16 +8,17 @@
 
 ## 文件清单
 
-| 文件                    | 职责                                      |
-| ----------------------- | ----------------------------------------- |
-| `decorative-grid.tsx`   | 顶部两侧装饰虚线网格                      |
-| `mdx-components.tsx`    | MDX 组件映射 + 标题锚点 + Nextra 兼容兜底 |
-| `pagination-nav.tsx`    | 文章列表分页导航                          |
-| `post-card.tsx`         | 单篇文章卡片（封面、阅读信息、hover）     |
-| `post-list.tsx`         | 文章卡片列表容器                          |
-| `site-header.tsx`       | 顶部导航（滚动收缩、毛玻璃）              |
-| `table-of-contents.tsx` | 文章左侧可折叠目录                        |
-| `theme-toggle.tsx`      | 亮/暗主题切换                             |
+| 文件                    | 职责                                           |
+| ----------------------- | ---------------------------------------------- |
+| `code-block.tsx`        | 代码块语法高亮（Shiki）+ 语言标签 + 一键复制   |
+| `decorative-grid.tsx`   | 顶部两侧装饰虚线网格                           |
+| `mdx-components.tsx`    | MDX 组件映射 + 标题锚点 + 代码块 + Nextra 兜底 |
+| `pagination-nav.tsx`    | 文章列表分页导航                               |
+| `post-card.tsx`         | 单篇文章卡片（封面、阅读信息、hover）          |
+| `post-list.tsx`         | 文章卡片列表容器                               |
+| `site-header.tsx`       | 顶部导航（滚动收缩、毛玻璃）                   |
+| `table-of-contents.tsx` | 文章左侧可折叠目录                             |
+| `theme-toggle.tsx`      | 亮/暗主题切换                                  |
 
 ## 自指
 
