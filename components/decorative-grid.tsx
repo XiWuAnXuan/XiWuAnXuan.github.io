@@ -1,3 +1,11 @@
+/**
+ * Input: (none external)
+ * Output: DecorativeGrid (default)
+ * Pos: UI层-顶部两侧装饰虚线网格
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 const rows = Array.from({ length: 6 }, (_, index) => index)
 const columns = Array.from({ length: 9 }, (_, index) => index)
 

@@ -1,3 +1,11 @@
+/**
+ * Input: next, next-mdx-remote/rsc, @/.velite, #components/mdx-components, #components/table-of-contents, lib/reading-stats.mjs, lib/toc.mjs
+ * Output: generateStaticParams, generateMetadata, PostPage (default)
+ * Pos: 路由层-文章详情，MDX渲染/阅读统计/目录
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'

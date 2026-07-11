@@ -1,3 +1,11 @@
+/**
+ * Input: next/link
+ * Output: PaginationNav (default)
+ * Pos: UI层-文章列表分页导航
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 import Link from 'next/link'
 
 const getPageHref = (page: number) => (page === 1 ? '/posts' : `/posts/page/${page}`)

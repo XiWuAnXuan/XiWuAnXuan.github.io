@@ -1,3 +1,11 @@
+/**
+ * Input: next/link, lib/reading-stats.mjs
+ * Output: PostCardPost (interface), PostCard (default)
+ * Pos: UI层-文章卡片（hover虚线、封面、阅读信息）
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 import Link from 'next/link'
 import { getReadingStats } from '../lib/reading-stats.mjs'
 

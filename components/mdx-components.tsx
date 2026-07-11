@@ -1,3 +1,11 @@
+/**
+ * Input: mdx/types, next/link, lib/toc.mjs (slugifyHeading)
+ * Output: createMdxComponents(), mdxComponents (default), Callout/Tabs 等兼容组件
+ * Pos: UI层-MDX组件映射，标题锚点与 Nextra 旧组件兜底
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
 import { slugifyHeading } from '../lib/toc.mjs'

@@ -28,3 +28,9 @@
 - [x] 调整文章目录为桌面左侧留白固定目录：撤销嵌入正文旁边的布局，增加滚动当前小节高亮，保留可收起展开。
 - [x] 放大文章左侧目录卡片，并为目录背景增加 20px 毛玻璃模糊效果，使其更接近顶部导航质感。
 - [x] 将站点 SVG 图标从 app/icon.svg 移到 public/icon.svg，避免 GitHub Pages 静态导出把图标当页面路由处理。
+
+## 2026-07-11
+
+- [x] 初始化 GEB 分形文档系统：全量 L3 文件头 + L2 FOLDER_INDEX + L1 PROJECT_INDEX.md
+- [x] 覆盖 app/、components/、lib/ 与根配置文件；跳过 next-env.d.ts（Next 生成勿改）
+- [x] 移除首页与页脚社交图标链接；页脚删除 CC BY-NC 4.0 与 [ Afezria ]，仅保留年份与 © Xuan

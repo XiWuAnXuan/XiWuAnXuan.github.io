@@ -1,3 +1,11 @@
+/**
+ * Input: next/link, next/navigation, next/image, react, #components/theme-toggle
+ * Output: SiteHeader (default)
+ * Pos: UI层-顶部导航（滚动收缩、毛玻璃）
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 'use client'
 
 import Link from 'next/link'

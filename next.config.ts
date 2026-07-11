@@ -1,3 +1,11 @@
+/**
+ * Input: next, velite (build)
+ * Output: nextConfig (default, Promise via withVelite)
+ * Pos: 配置层-Next：Velite构建、静态导出、安全头、重定向
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 import type { NextConfig } from 'next'
 import { build } from 'velite'
 

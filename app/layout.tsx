@@ -1,8 +1,14 @@
-﻿import type { Metadata } from 'next'
+/**
+ * Input: next (Metadata, font/local), next-themes, #components/decorative-grid, #components/site-header, ./globals.css
+ * Output: metadata, RootLayout (default)
+ * Pos: 路由层-根布局，字体/主题/页眉页脚与全局外壳
+ *
+ * 本注释在文件修改时自动更新
+ */
+
+import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import localFont from 'next/font/local'
-import Link from 'next/link'
-import { FaGithub, FaMastodon, FaRss, FaTelegramPlane, FaTwitter } from 'react-icons/fa'
 import DecorativeGrid from '#components/decorative-grid'
 import SiteHeader from '#components/site-header'
 import './globals.css'
@@ -99,52 +105,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main>{children}</main>
             <footer>
               <hr className="my-8 dark:!border-[#292c2d]" />
-              <div className="grid auto-cols-min grid-flow-col gap-8 text-xl ss:gap-4">
-                <Link
-                  href="https://twitter.com/Xuan__"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Twitter"
-                >
-                  <FaTwitter />
-                </Link>
-                <Link
-                  href="https://m.cmx.im/@aozaki"
-                  target="_blank"
-                  rel="me"
-                  aria-label="Mastodon"
-                >
-                  <FaMastodon />
-                </Link>
-                <Link
-                  href="https://github.com/aozaki-kuro"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
-                </Link>
-                <Link
-                  href="https://t.me/aozaki_ch"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Telegram"
-                >
-                  <FaTelegramPlane />
-                </Link>
-                <Link href="/feed.xml" target="_blank" rel="noreferrer" aria-label="RSS">
-                  <FaRss />
-                </Link>
-              </div>
-              <small className="mt-32 block text-p-light dark:text-inherit">
-                <abbr
-                  title="This site and all its content are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-                  className="cursor-help"
-                >
-                  CC BY-NC 4.0
-                </abbr>{' '}
+              <small className="mt-8 block text-p-light dark:text-inherit">
                 <time>{year}</time> © Xuan.
-                <span className="float-right">[ Afezria ]</span>
               </small>
             </footer>
           </div>

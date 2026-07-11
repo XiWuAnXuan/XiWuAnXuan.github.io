@@ -1,4 +1,12 @@
-﻿import { posts } from '@/.velite'
+/**
+ * Input: @/.velite
+ * Output: dynamic=force-static, GET (RSS XML Response)
+ * Pos: 路由层-RSS Feed，静态导出 /feed.xml
+ *
+ * 本注释在文件修改时自动更新
+ */
+
+import { posts } from '@/.velite'
 
 export const dynamic = 'force-static'
 

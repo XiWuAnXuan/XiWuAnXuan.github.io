@@ -1,3 +1,11 @@
+/**
+ * Input: next-themes, react
+ * Output: ThemeToggle (default)
+ * Pos: UI层-亮暗主题切换按钮
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 'use client'
 
 import { useTheme } from 'next-themes'

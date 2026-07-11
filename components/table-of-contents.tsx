@@ -1,3 +1,11 @@
+/**
+ * Input: react
+ * Output: TocItem (interface), TableOfContents (default)
+ * Pos: UI层-文章左侧可折叠目录与滚动高亮
+ *
+ * 本注释在文件修改时自动更新
+ */
+
 'use client'
 
 import { useEffect, useState } from 'react'

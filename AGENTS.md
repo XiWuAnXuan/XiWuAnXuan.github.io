@@ -1,34 +1,47 @@
+# GEB 入口
+
+- **L1 项目索引（优先阅读）**: [PROJECT_INDEX.md](./PROJECT_INDEX.md)
+- 结构变更后必须同步: 文件头 Input/Output/Pos → 目录 FOLDER_INDEX.md → PROJECT_INDEX.md
+- 全局 GEB 规则: `~/.grok/AGENTS.md` / skill `geb`
+
+---
+
 # AGENTS.md 鈥?AI 鍗忎綔瀵艰埅鏂囨。
 
 > 浠讳綍 AI 杩涘叆姝ら」鐩紝璇峰厛瀹屾暣闃呰鏈枃浠讹紝鍐嶅紑濮嬩换浣曟搷浣溿€?
+
 ---
 
 ## 涓€銆侀」鐩槸浠€涔?
+
 杩欐槸 **Xuan 鐨勪釜浜哄崥瀹?*锛屾鍦ㄤ粠鏃ф妧鏈爤閲嶅啓涓烘柊鎶€鏈爤銆?
-| 缁村害     | 鏃э紙閲嶅啓鍓嶏級                             | 鏂帮紙鐩爣锛?                        |
-| -------- | ---------------------------------------- | ---------------------------------- |
-| 璺敱     | Next.js 15 Pages Router                  | Next.js 15 App Router              |
-| 鍐呭灞?  | Nextra 3 + nextra-theme-blog             | Velite                             |
-| 鏍峰紡     | Tailwind CSS v3.4锛圢extra 绠＄悊鏆楄壊妯″紡锛?| Tailwind CSS v3.4 + next-themes    |
-| RSS      | scripts/gen-rss.mjs 澶栭儴鑴氭湰             | app/feed.xml/route.ts 璺敱         |
-| 鏆楄壊妯″紡 | Nextra 鍐呯疆                              | next-themes锛堢郴缁熻嚜鍔?+ 鎵嬪姩鍒囨崲锛?|
-| 閮ㄧ讲     | Vercel + Cloudflare Pages                | 鍚屽乏锛屼繚鐣欏弻閮ㄧ讲鏀寔               |
+
+| 缁村害      | 鏃э紙閲嶅啓鍓嶏級                               | 鏂帮紙鐩爣锛?                              |
+| ----------- | ----------------------------------------------- | ------------------------------------------- |
+| 璺敱       | Next.js 15 Pages Router                         | Next.js 15 App Router                       |
+| 鍐呭灞?    | Nextra 3 + nextra-theme-blog                    | Velite                                      |
+| 鏍峰紡      | Tailwind CSS v3.4锛圢extra 绠＄悊鏆楄壊妯″紡锛? | Tailwind CSS v3.4 + next-themes             |
+| RSS         | scripts/gen-rss.mjs 澶栭儴鑴氭湰                | app/feed.xml/route.ts 璺敱                 |
+| 鏆楄壊妯″紡 | Nextra 鍐呯疆                                   | next-themes锛堢郴缁熻嚜鍔?+ 鎵嬪姩鍒囨崲锛? |
+| 閮ㄧ讲      | Vercel + Cloudflare Pages                       | 鍚屽乏锛屼繚鐣欏弻閮ㄧ讲鏀寔               |
 
 鍗氬鍔熻兘鑼冨洿锛?*鍙繚鐣欐枃绔犲垪琛?+ 鏂囩珷璇︽儏**锛屾棤 commission銆佹棤 photography銆?
 ---
 
 ## 浜屻€侀噸瑕佹枃妗ｈ矾寰?
-| 鏂囨。      | 璺緞                                                            | 鍐呭                       |
-| --------- | --------------------------------------------------------------- | -------------------------- |
-| 璁捐 Spec | docs/superpowers/specs/2026-07-06-nextjs-blog-rewrite-design.md | 鏋舵瀯鍐崇瓥銆佹妧鏈€夊瀷銆佹暟鎹祦 |
-| 瀹炵幇璁″垝  | docs/superpowers/plans/2026-07-06-nextjs-blog-rewrite.md        | 17 涓换鍔＄殑閫愭瀹炵幇娓呭崟    |
-| 鏈枃浠?   | AGENTS.md                                                       | 椤圭洰瀵艰埅锛堜綘姝ｅ湪璇伙級       |
 
-**寮€濮嬪伐浣滃墠蹇呰锛?* 鍏堣 Spec锛屽啀璇诲疄鐜拌鍒掞紝纭褰撳墠杩涘害鍚庡啀鍔ㄦ墜銆?
+| 鏂囨。      | 璺緞                                                           | 鍐呭                                 |
+| ----------- | --------------------------------------------------------------- | ------------------------------------- |
+| 璁捐 Spec  | docs/superpowers/specs/2026-07-06-nextjs-blog-rewrite-design.md | 鏋舵瀯鍐崇瓥銆佹妧鏈€夊瀷銆佹暟鎹祦 |
+| 瀹炵幇璁″垝 | docs/superpowers/plans/2026-07-06-nextjs-blog-rewrite.md        | 17 涓换鍔＄殑閫愭瀹炵幇娓呭崟       |
+| 鏈枃浠?    | AGENTS.md                                                       | 椤圭洰瀵艰埅锛堜綘姝ｅ湪璇伙級        |
+
+*_寮€濮嬪伐浣滃墠蹇呰锛?_ 鍏堣 Spec锛屽啀璇诲疄鐜拌鍒掞紝纭褰撳墠杩涘害鍚庡啀鍔ㄦ墜銆?
 ---
 
 ## 涓夈€佸綋鍓嶈繘搴?
-**闃舵锛氬噯澶囬樁娈?鈥?灏氭湭寮€濮嬪疄鐜颁换浣曚唬鐮?*
+
+*_闃舵锛氬噯澶囬樁娈?鈥?灏氭湭寮€濮嬪疄鐜颁换浣曚唬鐮?_
 
 - [x] 璁捐 Spec 宸插畬鎴愬苟淇濆瓨
 - [x] 瀹炵幇璁″垝宸插畬鎴愬苟淇濆瓨
@@ -54,18 +67,20 @@
 ---
 
 ## 鍥涖€佸叧閿害鏉燂紙AI 蹇呴』閬靛畧锛?
+
 1. **涓嶈瀹夎 Nextra**锛屽凡鍐冲畾褰诲簳绉婚櫎
 2. **涓嶈鍗囩骇 Tailwind 鍒?v4**锛屼繚鎸?v3.4
 3. **RSS 蹇呴』鐢?app/feed.xml/route.ts**锛屼笉鐢ㄥ閮ㄨ剼鏈拰 rss 鍖?4. **next.config.ts 蹇呴』鐢?withVelite 鍖呰９**锛屼笖闇€瑕?transpilePackages: ["velite"]
-5. **velite.config.ts 鐨?slug 瀛楁**锛歠rontmatter 閲岀殑 slug 浼樺厛锛屽惁鍒欑敤鏂囦欢鍚嶏紙ctx.meta.basename锛?6. **mdx-components.tsx 蹇呴』鍖呭惈 Nextra 鏃х粍浠跺厹搴?*锛圕allout, Tabs, Tab, Steps, FileTree锛?7. **鏆楄壊妯″紡鐢?darkMode: "class"** 閰嶅悎 next-themes
-8. **淇濈暀 public/ 鐩綍**锛堝瓧浣撱€佸浘鏍囥€佸浘鐗囷級涓嶈鍒犻櫎
-9. **鍖呯鐞嗗櫒鐢?bun**锛屼笉瑕佺敤 npm/yarn
+4. **velite.config.ts 鐨?slug 瀛楁**锛歠rontmatter 閲岀殑 slug 浼樺厛锛屽惁鍒欑敤鏂囦欢鍚嶏紙ctx.meta.basename锛?6. **mdx-components.tsx 蹇呴』鍖呭惈 Nextra 鏃х粍浠跺厹搴?*锛圕allout, Tabs, Tab, Steps, FileTree锛?7. **鏆楄壊妯″紡鐢?darkMode: "class"** 閰嶅悎 next-themes
+5. **淇濈暀 public/ 鐩綍**锛堝瓧浣撱€佸浘鏍囥€佸浘鐗囷級涓嶈鍒犻櫎
+6. **鍖呯鐞嗗櫒鐢?bun**锛屼笉瑕佺敤 npm/yarn
 
 ---
 
 ## 浜斻€侀」鐩洰褰曠幇鐘讹紙閲嶅啓鍓嶏級
 
 褰撳墠浠嶆槸鏃ф灦鏋勶紝涓昏鐩綍锛?
+
 ```
 pages/          <- 鏃?Pages Router 椤甸潰锛岄噸鍐欏悗鍒犻櫎
 components/     <- 閮ㄥ垎缁勪欢浼氫繚鐣欙紙閲嶅啓锛夛紝commission/ 鍜?photography/ 鍒犻櫎
@@ -75,7 +90,7 @@ styles/         <- main.css 杩佺Щ鍒?app/globals.css 鍚庡垹闄?public/    
 
 閲嶅啓鍚庣洰鏍囩洰褰曪細
 
-```
+````
 app/            <- App Router 椤甸潰鍜屽竷灞€
 components/     <- 鍙繚鐣欐柊缁勪欢
 content/posts/  <- 鎵€鏈夋枃绔狅紙浠?pages/posts/ 杩佺Щ锛?.velite/        <- Velite 鏋勫缓杈撳嚭锛坓itignore锛?```
@@ -94,9 +109,10 @@ author: Xuan
 image: https://...锛堝彲閫夛級
 slug: custom-slug锛堝彲閫夛紝涓嶅～鍒欑敤鏂囦欢鍚嶏級
 ---
-```
+````
 
 Velite 鐢熸垚鍚庝粠 @/.velite 瀵煎叆锛?
+
 ```ts
 import { posts } from '@/.velite'
 // posts: Array<{ title, date, description?, author?, slug, content }>
