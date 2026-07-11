@@ -34,3 +34,4 @@
 - [x] 初始化 GEB 分形文档系统：全量 L3 文件头 + L2 FOLDER_INDEX + L1 PROJECT_INDEX.md
 - [x] 覆盖 app/、components/、lib/ 与根配置文件；跳过 next-env.d.ts（Next 生成勿改）
 - [x] 移除首页与页脚社交图标链接；页脚删除 CC BY-NC 4.0 与 [ Afezria ]，仅保留年份与 © Xuan
+- [x] 隐藏文章侧栏目录滚动条（保留滚轮滚动）
