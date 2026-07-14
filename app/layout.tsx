@@ -20,12 +20,7 @@ const inter = localFont({
   src: [
     {
       path: '../public/fonts/InterDisplay-roman.var.woff2',
-      weight: '100',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/InterDisplay-roman.var.woff2',
-      weight: '900',
+      weight: '100 900',
       style: 'normal',
     },
   ],

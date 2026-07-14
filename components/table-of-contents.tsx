@@ -23,12 +23,13 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
   useEffect(() => {
     if (!items.length) return
 
-    const updateActiveHeading = () => {
-      const headings = items
+    const getHeadings = () =>
+      items
         .map(item => document.getElementById(item.id))
         .filter((heading): heading is HTMLElement => Boolean(heading))
 
-      const current = [...headings]
+    const updateActiveHeading = () => {
+      const current = [...getHeadings()]
         .reverse()
         .find(heading => heading.getBoundingClientRect().top <= 140)
 
@@ -36,11 +37,19 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
     }
 
     updateActiveHeading()
-    window.addEventListener('scroll', updateActiveHeading, { passive: true })
+
+    // IntersectionObserver 仅在标题穿越视口顶部 140px 触发线时回调，
+    // 回调内沿用与原滚动方案完全一致的判定逻辑，避免每帧强制重排。
+    const observer = new IntersectionObserver(updateActiveHeading, {
+      rootMargin: '-140px 0px 0px 0px',
+      threshold: [0, 1],
+    })
+    getHeadings().forEach(heading => observer.observe(heading))
+
     window.addEventListener('resize', updateActiveHeading)
 
     return () => {
-      window.removeEventListener('scroll', updateActiveHeading)
+      observer.disconnect()
       window.removeEventListener('resize', updateActiveHeading)
     }
   }, [items])

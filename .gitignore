@@ -49,6 +49,11 @@ public/robots.txt
 # velite
 .velite/
 
+# image optimization —— image-originals/ 为本地全分辨率原图存档/源，
+# public/images/ 提交为线上服务的优化版；manifest 为本地派生状态
+/image-originals/
+/scripts/.image-manifest.json
+
 # local preview logs and downloaded comparison snapshots
 .next-start.*.log
 .live-*.html

@@ -1,23 +1,14 @@
 /**
- * Input: react, shiki
+ * Input: react, shiki, #components/copy-button
  * Output: CodeBlock (default)
- * Pos: UI层-MDX代码块，语法高亮 + 语言标签 + 一键复制
+ * Pos: UI层-MDX代码块，构建期语法高亮 + 语言标签 + 一键复制
  *
  * 本注释在文件修改时自动更新
  */
 
-'use client'
-
-import {
-  Children,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react'
+import { Children, isValidElement, type ReactElement, type ReactNode } from 'react'
 import { codeToHtml } from 'shiki'
+import CopyButton from '#components/copy-button'
 
 /** Map common fence labels to shiki language ids */
 const LANGUAGE_ALIASES: Record<string, string> = {
@@ -49,7 +40,7 @@ function extractText(node: ReactNode): string {
 
 function parseCodeChild(children: ReactNode): { language: string; code: string } {
   const child = Children.toArray(children).find(isValidElement) as
-    React.ReactElement<{ className?: string; children?: ReactNode }> | undefined
+    ReactElement<{ className?: string; children?: ReactNode }> | undefined
 
   const className = child?.props?.className ?? ''
   const match = /language-([\w#+-]+)/.exec(className)
@@ -76,66 +67,19 @@ async function highlight(code: string, language: string): Promise<string> {
   }
 }
 
-export default function CodeBlock({ children }: { children?: ReactNode }) {
-  const { language, code } = useMemo(() => parseCodeChild(children), [children])
-  const displayLang = language === 'text' ? 'text' : language
-  const [html, setHtml] = useState<string | null>(null)
-  const [copied, setCopied] = useState(false)
-
-  useEffect(() => {
-    let cancelled = false
-    setHtml(null)
-
-    highlight(code, language).then(result => {
-      if (!cancelled) setHtml(result)
-    })
-
-    return () => {
-      cancelled = true
-    }
-  }, [code, language])
-
-  const handleCopy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(code)
-    } catch {
-      const textarea = document.createElement('textarea')
-      textarea.value = code
-      textarea.setAttribute('readonly', '')
-      textarea.style.position = 'fixed'
-      textarea.style.left = '-9999px'
-      document.body.appendChild(textarea)
-      textarea.select()
-      document.execCommand('copy')
-      document.body.removeChild(textarea)
-    }
-
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1600)
-  }, [code])
+export default async function CodeBlock({ children }: { children?: ReactNode }) {
+  const { language, code } = parseCodeChild(children)
+  const html = await highlight(code, language)
 
   return (
     <div className="code-block not-prose">
       <div className="code-block-toolbar">
-        <span className="code-block-lang" title={displayLang}>
-          {displayLang}
+        <span className="code-block-lang" title={language}>
+          {language}
         </span>
-        <button
-          type="button"
-          className="code-block-copy"
-          onClick={handleCopy}
-          aria-label={copied ? '已复制' : '复制代码'}
-        >
-          {copied ? '已复制' : '复制'}
-        </button>
+        <CopyButton code={code} />
       </div>
-      {html ? (
-        <div className="code-block-body" dangerouslySetInnerHTML={{ __html: html }} />
-      ) : (
-        <pre className="code-block-fallback">
-          <code>{code}</code>
-        </pre>
-      )}
+      <div className="code-block-body" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
 }
