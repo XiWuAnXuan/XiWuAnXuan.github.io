@@ -60,7 +60,6 @@ export default function SiteHeader() {
             <Image src="/icon.svg" alt="" width={32} height={32} className="object-contain" />
           </Link>
           <nav className="relative z-30 ml-auto flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
-            <WeatherWidget />
             {navItems.map(item => {
               const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
 
@@ -78,6 +77,7 @@ export default function SiteHeader() {
                 </Link>
               )
             })}
+            <WeatherWidget />
             <ThemeToggle />
           </nav>
         </div>
