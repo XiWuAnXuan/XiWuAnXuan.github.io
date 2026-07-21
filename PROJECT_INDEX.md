@@ -110,15 +110,39 @@ graph TD
 
 > 路径在图中简化：`[slug]`、`[page]` 动态段用文字标识，避免 Mermaid 特殊字符问题。
 
+## 内容模型（content/posts frontmatter）
+
+文章 frontmatter 格式（schema 定义见 `velite.config.ts`）：
+
+```yaml
+---
+title: '文章标题'
+date: 2024/01/15
+description: '摘要（可选）'
+author: Xuan
+image: https://...（可选）
+slug: custom-slug（可选，不填则用文件名）
+---
+```
+
+Velite 构建后从 `@/.velite` 导入：
+
+```ts
+import { posts } from '@/.velite'
+// posts: Array<{ title, date, description?, author?, slug, content }>
+```
+
 ## 关键约定（项目级）
 
 1. **不要安装 Nextra**；内容层用 Velite
-2. **不要升级 Tailwind 到 v4**；保持 v3.4 + `darkMode: "class"`
+2. **不要升级 Tailwind 到 v4**；保持 v3.4 + `darkMode: "class"`（配合 next-themes）
 3. **RSS 必须走** `app/feed.xml/route.ts`
 4. **next.config** 用 Velite 构建包装，且 `transpilePackages: ["velite"]`
 5. **slug**：frontmatter 优先，否则文件名
-6. **保留 public/** 静态资源
-7. **GEB**：结构变更后同步 L3 文件头 → L2 `FOLDER_INDEX.md` → 本 L1 文件
+6. **mdx-components.tsx** 保留 Nextra 旧组件兜底（Callout / Tabs / Tab / Steps / FileTree）
+7. **保留 public/** 静态资源
+8. **包管理器用 npm**（`packageManager: npm@11.13.0`），不要用 bun/yarn
+9. **GEB**：结构变更后同步 L3 文件头 → L2 `FOLDER_INDEX.md` → 本 L1 文件
 
 ## 常用命令
 
