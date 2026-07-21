@@ -56,7 +56,8 @@ Blog_Project/
 │   ├── post-list.tsx
 │   ├── site-header.tsx
 │   ├── table-of-contents.tsx
-│   └── theme-toggle.tsx
+│   ├── theme-toggle.tsx
+│   └── weather-widget.tsx    # 页眉天气挂件（IP 定位 + Open-Meteo）
 ├── lib/                      # 纯工具 + 单测
 │   ├── FOLDER_INDEX.md
 │   ├── pagination.mjs
@@ -78,6 +79,8 @@ graph TD
   Layout --> DecGrid[components/decorative-grid]
   Layout --> Theme[next-themes]
   SiteHeader --> ThemeToggle[components/theme-toggle]
+  SiteHeader --> Weather[components/weather-widget]
+  Weather -->|"IP 定位 + 实时天气"| ExtWx["geojs.io / open-meteo.com"]
 
   Home[app/page.tsx] --> VeliteData
   Home --> PostCard[components/post-card]

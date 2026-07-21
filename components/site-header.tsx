@@ -1,7 +1,7 @@
 /**
- * Input: next/link, next/navigation, next/image, react, #components/theme-toggle
+ * Input: next/link, next/navigation, next/image, react, #components/theme-toggle, #components/weather-widget
  * Output: SiteHeader (default)
- * Pos: UI层-顶部导航（滚动收缩、毛玻璃）
+ * Pos: UI层-顶部导航（滚动收缩、毛玻璃、天气挂件）
  *
  * 本注释在文件修改时自动更新
  */
@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ThemeToggle from '#components/theme-toggle'
+import WeatherWidget from '#components/weather-widget'
 import Image from 'next/image'
 
 const navItems = [
@@ -59,6 +60,7 @@ export default function SiteHeader() {
             <Image src="/icon.svg" alt="" width={32} height={32} className="object-contain" />
           </Link>
           <nav className="relative z-30 ml-auto flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+            <WeatherWidget />
             {navItems.map(item => {
               const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
 
