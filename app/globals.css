@@ -278,10 +278,10 @@
 
 /* ≥1280px：文章区左缘不动、向右加宽（上限 950px），纸张框与标题区同步延伸 */
 @media (min-width: 1280px) {
-  /* 宽度 = 从全站 40rem 容器（px-6）的内容左缘延伸至视口右侧留 2rem，封顶 980px；整体左移 155px */
+  /* 宽度 = 从全站 40rem 容器（px-6）的内容左缘延伸至视口右侧留 2rem，封顶 982px；整体左移 157px（右缘等效左移 155px） */
   .post-article-layout {
-    width: min(980px, 50vw + 16.5rem + 30px);
-    margin-left: -155px;
+    width: min(982px, 50vw + 16.5rem + 32px);
+    margin-left: -157px;
   }
 
   .post-article-layout .post-article-body {
@@ -289,9 +289,9 @@
   }
 
   .post-paper-shell {
-    width: calc(min(980px, 50vw + 16.5rem + 30px) + 4rem);
+    width: calc(min(982px, 50vw + 16.5rem + 32px) + 4rem);
     max-width: none;
-    margin-left: -155px;
+    margin-left: -157px;
   }
 
   /* 3.25rem = 2rem 纸张框外扩 + 1.25rem，使标题文字与正文（px-5）左对齐 */
