@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  /* 锚点平滑滚动（目录跳转等）；偏移补偿由正文标题的 scroll-margin-top 提供。
+     尊重系统"减弱动态效果"设置的用户，保持瞬时跳转 */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     font-variation-settings: 'wght' 450;
   }
@@ -278,10 +286,10 @@
 
 /* ≥1280px：文章区左缘不动、向右加宽（上限 950px），纸张框与标题区同步延伸 */
 @media (min-width: 1280px) {
-  /* 宽度 = 从全站 40rem 容器（px-6）的内容左缘延伸至视口右侧留 2rem，封顶 983px；整体左移 158px（右缘等效左移 155px） */
+  /* 宽度 = 从全站 40rem 容器（px-6）的内容左缘延伸至视口右侧留 2rem，封顶 984px；整体左移 159px（右缘等效左移 155px） */
   .post-article-layout {
-    width: min(983px, 50vw + 16.5rem + 33px);
-    margin-left: -158px;
+    width: min(985px, 50vw + 16.5rem + 35px);
+    margin-left: -160px;
   }
 
   .post-article-layout .post-article-body {
@@ -289,9 +297,9 @@
   }
 
   .post-paper-shell {
-    width: calc(min(983px, 50vw + 16.5rem + 33px) + 4rem);
+    width: calc(min(985px, 50vw + 16.5rem + 35px) + 4rem);
     max-width: none;
-    margin-left: -158px;
+    margin-left: -160px;
   }
 
   /* 3.25rem = 2rem 纸张框外扩 + 1.25rem，使标题文字与正文（px-5）左对齐 */
@@ -349,65 +357,174 @@
   }
 }
 
-.post-toc-toggle {
+/* 目录标题栏：圆形折叠按钮 + 标题 */
+.post-toc-header {
   display: flex;
-  width: 100%;
+  align-items: center;
+  gap: 0.55rem;
+  border-bottom: 1px solid rgb(212 212 212 / 0.6);
+  padding-bottom: 0.7rem;
+}
+
+.dark .post-toc-header {
+  border-bottom-color: rgb(63 63 70 / 0.6);
+}
+
+.post-toc-collapse-btn {
+  display: inline-flex;
+  height: 30px;
+  width: 30px;
+  flex: none;
   cursor: pointer;
   align-items: center;
-  justify-content: space-between;
-  border: 0;
-  background: transparent;
-  padding: 0;
+  justify-content: center;
+  border: 2px solid rgb(212 212 212 / 0.9);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.6);
+  color: rgb(115 115 115);
+  box-shadow: 0 2px 0 rgb(212 212 212 / 0.55);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.post-toc-collapse-btn:hover,
+.post-toc-collapse-btn:focus-visible {
+  color: rgb(23 23 23);
+  border-color: rgb(163 163 163);
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 rgb(163 163 163 / 0.6);
+}
+
+.post-toc-collapse-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgb(212 212 212 / 0.55);
+}
+
+.post-toc-collapse-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.post-toc-collapsed .post-toc-collapse-btn svg {
+  transform: rotate(90deg);
+}
+
+.dark .post-toc-collapse-btn {
+  border-color: rgb(63 63 70 / 0.9);
+  background: rgb(39 39 42 / 0.6);
+  color: rgb(161 161 170);
+  box-shadow: 0 2px 0 rgb(63 63 70 / 0.7);
+}
+
+.dark .post-toc-collapse-btn:hover,
+.dark .post-toc-collapse-btn:focus-visible {
+  color: rgb(245 245 245);
+  border-color: rgb(113 113 122);
+  box-shadow: 0 3px 0 rgb(113 113 122 / 0.6);
+}
+
+.post-toc-title {
   color: rgb(82 82 82);
-  font: inherit;
   font-weight: 700;
 }
 
-.dark .post-toc-toggle {
+.dark .post-toc-title {
   color: rgb(212 212 212);
 }
 
+/* 折叠：目录体收起（max-height + 透明度过渡），标题栏底线隐藏 */
+.post-toc-collapsed {
+  min-height: 0;
+}
+
+.post-toc-collapsed .post-toc-header {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
 .post-toc-nav {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.22rem;
+  margin-top: 0.3rem;
+  max-height: 100rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.24s ease,
+    opacity 0.18s ease;
+}
+
+.post-toc-collapsed .post-toc-nav {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .post-toc-link {
+  position: relative;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border-left: 1px solid rgb(220 220 220);
-  padding: 0.36rem 0 0.36rem 0.95rem;
+  border-bottom: 1px solid rgb(212 212 212 / 0.45);
+  padding: 0.5rem 0.25rem 0.5rem 0.85rem;
   color: inherit;
+  font-weight: 500;
   text-decoration: none;
-  transition:
-    border-color 150ms ease,
-    color 150ms ease,
-    font-weight 150ms ease;
+  transition: color 0.2s ease;
 }
 
-.post-toc-link:hover,
+.post-toc-link:last-child {
+  border-bottom: 0;
+}
+
+.post-toc-link:hover {
+  color: rgb(23 23 23);
+  opacity: 1;
+}
+
+/* 激活项：加粗变色 + 左侧圆角小胶囊竖条 */
 .post-toc-link-active {
-  border-left-color: rgb(23 23 23);
   color: rgb(23 23 23);
   font-weight: 700;
   opacity: 1;
 }
 
+.post-toc-link-active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 16px;
+  width: 4px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: rgb(23 23 23);
+}
+
 .dark .post-toc-link {
-  border-left-color: rgb(64 64 64);
+  border-bottom-color: rgb(63 63 70 / 0.5);
 }
 
 .dark .post-toc-link:hover,
 .dark .post-toc-link-active {
-  border-left-color: rgb(245 245 245);
   color: rgb(245 245 245);
 }
 
+.dark .post-toc-link-active::before {
+  background: rgb(245 245 245);
+}
+
+/* 层级缩进：三级标题缩进且字号递减，胶囊竖条跟随缩进 */
 .post-toc-link-nested {
-  padding-left: 1.45rem;
+  padding-left: 1.85rem;
+  font-size: 0.75rem;
+}
+
+.post-toc-link-nested.post-toc-link-active::before {
+  left: 1rem;
 }
 
 .post-prose {
