@@ -318,7 +318,8 @@
   display: none;
 }
 
-@media (min-width: 1280px) {
+/* ≥1600px 才显示目录：更窄（含页面放大）时文章框(左移后)会与目录重叠，隐藏让位 */
+@media (min-width: 1600px) {
   .post-toc {
     position: fixed;
     top: 8.5rem;
