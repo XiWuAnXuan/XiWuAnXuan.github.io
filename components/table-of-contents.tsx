@@ -96,7 +96,10 @@ export default function TableOfContents({ items }: { items: TocItem[] }) {
   }
 
   return (
-    <aside className={`post-toc${open ? '' : 'post-toc-collapsed'}`} aria-label="文章目录">
+    <aside
+      className={['post-toc', open ? '' : 'post-toc-collapsed'].filter(Boolean).join(' ')}
+      aria-label="文章目录"
+    >
       <div className="post-toc-header">
         <button
           type="button"
